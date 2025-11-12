@@ -1,0 +1,14 @@
+transformers-test-framework/
+│
+├── README.md
+├── requirements.txt
+├── pytest.ini
+├── conftest.py
+├── tests/
+│   ├── test_model_inference.py
+│   ├── test_tokenizer_pipeline.py
+│   ├── test_cross_version_compatibility.py
+│
+└── .github/
+    └── workflows/
+        └── ci.yml
