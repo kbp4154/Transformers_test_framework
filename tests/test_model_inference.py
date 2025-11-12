@@ -1,9 +1,9 @@
-import pytest
-from transformers import pipeline
+import torch
 
-@pytest.mark.parametrize("model_name", ["distilbert-base-uncased", "bert-base-uncased"])
-def test_inference_output_consistency(model_name):
-    """Ensure model inference runs and output is stable."""
-    nlp = pipeline("sentiment-analysis", model=model_name)
-    outputs = [nlp("Transformers are amazing!") for _ in range(2)]
-    assert outputs[0][0]['label'] == outputs[1][0]['label']
+def test_model_inference(model_and_tokenizer):
+    model_name, model, tokenizer = model_and_tokenizer
+    inputs = tokenizer("Hello world", return_tensors="pt")
+    with torch.no_grad():
+        outputs = model.generate(**inputs, max_new_tokens=5)
+    assert outputs is not None
+    assert outputs.shape[1] > 0

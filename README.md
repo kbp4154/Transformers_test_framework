@@ -1,25 +1,22 @@
-# Transformers Test Automation Framework
+# 🧪 Transformers Test Framework
 
-A modular, scalable **test automation framework** built to validate **Transformer** and **vLLM**-based pipelines at scale.  
-Inspired by Hugging Face’s testing philosophy, this framework demonstrates how to run **100K+ distributed PyTest suites** across GPUs and CPUs with full CI/CD integration.
-
----
-
-## Key Features
-
-- ✅ **Scalable Test Architecture:** Parallel execution using `pytest-xdist` and dynamic fixtures.
-- 🧠 **Cross-Version Compatibility:** Validate model behavior across `transformers` and `PyTorch` releases.
-- 🧩 **CI/CD Integration:** Runs automatically via GitHub Actions on every push or pull request.
-- 🧰 **Reproducibility Metrics:** Verifies consistent model outputs, tokenizer integrity, and inference latency.
-- 📊 **Benchmark-Ready:** Extendable for large-scale regression, performance, and model evaluation workflows.
+A lightweight yet scalable testing framework inspired by **Hugging Face’s Transformers testing ecosystem**.  
+It automates validation for model inference, tokenization, and cross-version compatibility—designed to scale toward 100K+ tests through CI/CD.
 
 ---
 
-## Tech Stack
+### ⚙️ Features
+- 🔁 **Dynamic model validation:** runs inference checks across multiple Transformer architectures  
+- 🧩 **Tokenizer and pipeline consistency:** validates encode/decode parity and pipeline output shapes  
+- 🔄 **Cross-version compatibility:** ensures reproducibility between different `transformers` and `torch` versions  
+- 🚀 **CI/CD ready:** integrated GitHub Actions workflow for distributed and nightly testing  
+- 📊 **Extensible:** modular test structure that can grow into a full test-infra system  
 
-- **Languages:** Python 3.10+
-- **Frameworks:** PyTest, Transformers, vLLM
-- **Tools:** GitHub Actions, Docker (optional), `pytest-xdist`
-- **Core Dependencies:**  
-  ```bash
-  pip install torch transformers pytest pytest-xdist
+---
+
+### 📦 Quick Start
+```bash
+git clone https://github.com/kbp4154/transformers-test-framework.git
+cd transformers-test-framework
+pip install -r requirements.txt
+pytest -v --maxfail=1 --disable-warnings
